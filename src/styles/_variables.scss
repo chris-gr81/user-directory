@@ -1,0 +1,50 @@
+// Color-Set
+$color-iceblue: #00bcd4; // Primary Ice Blue
+$color-iceblue-dark: #008fa0; // Navbar & Dark Accents
+$color-iceblue-light: #e0f7fa; // Hover, Fokus, light BG
+$color-white: #ffffff; // simply white
+$color-bg-main: #f9fcfd; // Page-BG
+$color-bg-card: #d0f0f5; // Card-BG
+$color-neutral-medium: #e0e0e0; // Border, secondary BG
+$color-text-primary: #263238; // Maintext
+$color-text-light: rgba(255, 255, 255, 0.75); // white text
+$color-placeholder: #9e9e9e; // placeholder
+
+// Semantics-navbar
+$navbar-bg: $color-iceblue-dark;
+$navbar-text: $color-white;
+$navbar-btn-hover-bg: $color-iceblue-light;
+$navbar-btn-bg: $color-white;
+$navbar-btn-text: $color-iceblue-dark;
+$navbar-btn-hover-text: $color-iceblue-dark;
+$navbar-btn-border: 1px solid rgba(0, 0, 0, 0.1);
+$navbar-btn-hover-border: 1px solid $color-iceblue;
+$navbar-btn-active-bg: darken($color-iceblue-light, 10%);
+$navbar-btn-active-text: $color-white;
+$navbar-btn-active-border: #008fa0;
+
+$main-bg: $color-bg-main;
+
+$card-bg: $color-bg-card;
+$card-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+$btn-primary-bg: $color-iceblue;
+$btn-primary-text: $color-white;
+$btn-primary-hover-bg: darken($color-iceblue, 8%);
+
+$btn-secondary-bg: $color-neutral-medium;
+$btn-secondary-text: $color-text-primary;
+$btn-secondary-hover-bg: darken($color-neutral-medium, 5%);
+
+$input-bg: $color-white;
+$input-border: 1px solid $color-neutral-medium;
+$input-focus-border: 2px solid $color-iceblue;
+$input-placeholder: $color-placeholder;
+
+// radius & shaodws
+$border-radius-default: 6px;
+$border-radius-form: 4px;
+$shadow-default: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+// font-family
+$font-jost: "Jost", sans-serif;

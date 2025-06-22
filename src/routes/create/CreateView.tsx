@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 
-function Create() {
+function CreateView() {
   const { userId } = useParams();
   return <>Create or edit {userId}</>;
 }
 
-export default Create;
+export default CreateView;

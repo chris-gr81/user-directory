@@ -1,4 +1,5 @@
 import { Link, Outlet } from "react-router-dom";
+import "./Root.scss";
 
 function Root() {
   return (
@@ -12,6 +13,7 @@ function Root() {
         </Link>
       </nav>
       <main className="main-content">
+        {" "}
         <Outlet />
       </main>
     </div>

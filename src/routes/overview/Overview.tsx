@@ -1,5 +1,5 @@
-function Overwiev() {
+function Overview() {
   return <>Overwiev</>;
 }
 
-export default Overwiev;
+export default Overview;

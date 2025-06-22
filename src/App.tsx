@@ -1,9 +1,9 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./routes/Root";
 import Index from "./routes/Index";
-import Overwiev from "./routes/overview/Overview";
-import Create from "./routes/create/Create";
+import CreateView from "./routes/create/CreateView";
 import ErrorPage from "./routes/error/ErrorPage";
+import Overview from "./routes/overview/Overview";
 
 function App() {
   const router = createBrowserRouter([
@@ -13,9 +13,9 @@ function App() {
       errorElement: <ErrorPage />,
       children: [
         { index: true, element: <Index /> },
-        { path: "overview", element: <Overwiev /> },
-        { path: "create", element: <Create /> },
-        { path: "edit/:userId", element: <Create /> },
+        { path: "overview", element: <Overview /> },
+        { path: "create", element: <CreateView /> },
+        { path: "edit/:userId", element: <CreateView /> },
       ],
     },
   ]);
