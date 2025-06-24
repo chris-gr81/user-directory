@@ -4,6 +4,7 @@ import Index from "./routes/Index";
 import CreateView from "./routes/create/CreateView";
 import ErrorPage from "./routes/error/ErrorPage";
 import Overview from "./routes/overview/Overview";
+import EditView from "./routes/edit/EditView";
 
 function App() {
   const router = createBrowserRouter([
@@ -15,7 +16,7 @@ function App() {
         { index: true, element: <Index /> },
         { path: "overview", element: <Overview /> },
         { path: "create", element: <CreateView /> },
-        { path: "edit/:userId", element: <CreateView /> },
+        { path: "edit/:userId", element: <EditView /> },
       ],
     },
   ]);

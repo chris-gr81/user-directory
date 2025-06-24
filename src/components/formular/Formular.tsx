@@ -1,3 +1,4 @@
+import Button from "../button/Button";
 import "./formular.scss";
 
 function Formular() {
@@ -22,7 +23,7 @@ function Formular() {
       <input type="tel" id="phone" />
       <label htmlFor="webside">Webseite</label>
       <input type="url" id="webside" />
-      <input type="submit" id="submit" />
+      <Button type="submit" text="Submit" />
     </form>
   );
 }

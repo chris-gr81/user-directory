@@ -2,5 +2,26 @@
   display: flex;
   flex-direction: column;
   width: 20rem;
-  gap: 1rem;
+
+  & label {
+    color: $color-text-primary;
+  }
+  & input {
+    height: 2rem;
+    border: $input-border;
+    border-radius: $border-radius-default;
+    background-color: $input-bg;
+    margin-top: 0.1rem;
+    margin-bottom: 1rem;
+    box-shadow: $shadow-default;
+
+    &:focus {
+      border: $input-focus-border;
+      outline: none;
+    }
+
+    &::placeholder {
+      color: $input-placeholder;
+    }
+  }
 }
