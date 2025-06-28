@@ -1,0 +1,18 @@
+.btn {
+  border-radius: $border-radius-default;
+  height: 2rem;
+  font-size: 1rem;
+  width: fit-content;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border: $input-border;
+  box-shadow: $shadow-default;
+
+  &__default {
+    background-color: $btn-primary-bg;
+    color: $btn-primary-text;
+    &:hover {
+      background-color: $btn-primary-hover-bg;
+    }
+  }
+}

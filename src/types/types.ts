@@ -1,0 +1,12 @@
+export type UserData = {
+  id: string;
+  userName: string;
+  birthDate: string;
+  gender: string;
+  eMail: string;
+  adress: string;
+  phone: string;
+  url: string;
+};
+
+export type FormAction = { type: keyof UserData; value: string };

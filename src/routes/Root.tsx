@@ -1,19 +1,12 @@
 import { Link, Outlet } from "react-router-dom";
 import "./Root.scss";
+import Sidebar from "../components/sidebar/Sidebar";
 
 function Root() {
   return (
     <div className="root-body">
-      <nav className="sidebar-container">
-        <Link to="overview">
-          <button className="sidebar-item">Übersicht</button>
-        </Link>
-        <Link to="create">
-          <button className="sidebar-item">Erstellen</button>
-        </Link>
-      </nav>
+      <Sidebar />
       <main className="main-content">
-        {" "}
         <Outlet />
       </main>
     </div>

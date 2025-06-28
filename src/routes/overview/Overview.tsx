@@ -1,5 +1,7 @@
+import Card from "../../components/card/Card";
+
 function Overview() {
-  return <>Overwiev</>;
+  return <Card />;
 }
 
 export default Overview;
