@@ -1,12 +1,23 @@
 import Button from "../button/Button";
 import "./formular.scss";
 import useFormData from "../../hooks/useFormData";
+import { useContext } from "react";
+import { StorageContext } from "../../context/StorageContext";
 
 function Formular() {
-  const { handleChange } = useFormData();
+  const { handleChange, formData } = useFormData();
+  const { addProfile } = useContext(StorageContext);
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault(); // avoid reload
+    addProfile(formData);
+  };
   return (
-    <form className="formular-wrapper" onChange={handleChange}>
+    <form
+      className="formular-wrapper"
+      onChange={handleChange}
+      onSubmit={handleSubmit}
+    >
       <label htmlFor="user-name">Username</label>
       <input type="text" id="user-name" name="userName" />
       <label htmlFor="geburts-datum">Geburtsdatum</label>

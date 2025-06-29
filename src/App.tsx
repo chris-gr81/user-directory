@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { StorageProvider } from "./context/StorageContext.tsx";
 import Root from "./routes/Root";
 import Index from "./routes/Index";
 import CreateView from "./routes/create/CreateView";
@@ -20,7 +21,11 @@ function App() {
       ],
     },
   ]);
-  return <RouterProvider router={router} />;
+  return (
+    <StorageProvider>
+      <RouterProvider router={router} />
+    </StorageProvider>
+  );
 }
 
 export default App;

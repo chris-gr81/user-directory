@@ -15,13 +15,12 @@ function useFormData() {
   };
   const [formData, dispatchFormData] = useReducer(formReducer, defaultUserData);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLFormElement>) => {
     const { name, value } = e.target;
     dispatchFormData({
       type: name as keyof UserData,
       value,
     });
-    console.log(formData);
   };
 
   return { formData, handleChange };

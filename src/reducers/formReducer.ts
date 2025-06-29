@@ -3,7 +3,7 @@ import type { FormAction, UserData } from "../types/types";
 export function formReducer(state: UserData, action: FormAction) {
   switch (action.type) {
     case "id":
-      return state;
+      return state; // TODO
     case "userName":
       return { ...state, userName: action.value };
     case "birthDate":
