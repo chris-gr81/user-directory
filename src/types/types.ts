@@ -1,12 +1,14 @@
 export type UserData = {
-  id: string;
+  id?: string;
   userName: string;
-  birthDate: string;
-  gender: string;
+  birthDate?: string;
+  gender?: string;
   eMail: string;
-  adress: string;
-  phone: string;
-  url: string;
+  adress?: string;
+  phone?: string;
+  url?: string;
 };
 
 export type FormAction = { type: keyof UserData; value: string };
+
+export type ProfileAction = { type: "ADD_PROFILE"; payload: UserData };

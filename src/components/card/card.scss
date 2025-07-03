@@ -1,0 +1,62 @@
+.card {
+  display: flex;
+  flex-direction: row;
+  box-shadow: $card-shadow;
+  width: 500px;
+  background-color: $card-bg;
+  border-radius: $border-radius-default;
+  border: $card-border;
+  padding: 0.5rem;
+  align-items: center;
+
+  &__picture {
+    min-width: 25%;
+    margin: 0.3rem 0rem;
+  }
+
+  &__sample-pic {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: $border-radius-default;
+  }
+  &__profile {
+    font-size: 0.8rem;
+    min-width: 65%;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0rem 1rem 1rem;
+    height: 100%;
+  }
+
+  &__title {
+    font-size: 1rem;
+    margin: 1rem 0rem;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__row {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+
+    & > div {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 100%;
+    }
+  }
+
+  &__right-bar {
+    height: 100%;
+    width: 10%;
+    display: flex;
+    justify-content: left;
+    margin: 0.3rem 0rem;
+  }
+}

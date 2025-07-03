@@ -5,6 +5,11 @@
   flex: 1;
   padding: 1rem;
   gap: 1rem;
+
+  .sidebar-logo {
+    width: 100%;
+    border-bottom: 1px solid $color-neutral-medium;
+  }
 }
 
 .sidebar-item {

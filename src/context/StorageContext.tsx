@@ -1,18 +1,27 @@
-import { createContext, useState, type ReactNode } from "react";
+import {
+  createContext,
+  useEffect,
+  useReducer,
+  useState,
+  type ReactNode,
+} from "react";
 import { LOCAL_STORAGE_KEY } from "../constants";
 import type { UserData } from "../types/types";
+import { profilesReducer } from "../reducers/profilesReducer";
 
 type StorageContextType = {
   addProfile: (profile: UserData) => void;
+  profiles: UserData[];
 };
 
 export const StorageContext = createContext<StorageContextType>({
   addProfile: () => {},
+  profiles: [],
 });
 
 export function StorageProvider({ children }: { children: ReactNode }) {
   // state for localstorage
-  const [profiles, setProfiles] = useState(() => {
+  const [profiles, dispatch] = useReducer(profilesReducer, [], () => {
     const inStorage = localStorage.getItem(LOCAL_STORAGE_KEY);
     if (inStorage) {
       try {
@@ -24,22 +33,18 @@ export function StorageProvider({ children }: { children: ReactNode }) {
     return [];
   });
 
+  // save in storage, if profiles-array changes
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(profiles));
+  }, [profiles]);
+
   // add new profile and update local storage
   const addProfile = (profile: UserData) => {
-    // TODO: Validators and Security
-    const nextId =
-      profiles.length > 0
-        ? Math.max(...profiles.map((profile) => Number(profile.id))) + 1
-        : 1;
-    const modifiedProfile = { ...profile, id: String(nextId) };
-    const updatedProfiles = [...profiles, modifiedProfile];
-
-    setProfiles(updatedProfiles);
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedProfiles));
+    dispatch({ type: "ADD_PROFILE", payload: profile });
   };
 
   return (
-    <StorageContext.Provider value={{ addProfile }}>
+    <StorageContext.Provider value={{ addProfile, profiles }}>
       {children}
     </StorageContext.Provider>
   );
