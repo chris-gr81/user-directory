@@ -12,6 +12,11 @@ export function profilesReducer(state: UserData[], action: ProfileAction) {
       const modifiedProfile = { ...action.payload, id: String(nextId) };
       return [...state, modifiedProfile];
     }
+    case "DELETE_PROFILE": {
+      // delete id with given id
+      const modifiedProfiles = state.filter(({ id }) => id !== action.payload);
+      return modifiedProfiles;
+    }
     default:
       return state;
   }

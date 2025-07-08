@@ -11,4 +11,6 @@ export type UserData = {
 
 export type FormAction = { type: keyof UserData; value: string };
 
-export type ProfileAction = { type: "ADD_PROFILE"; payload: UserData };
+export type ProfileAction =
+  | { type: "ADD_PROFILE"; payload: UserData }
+  | { type: "DELETE_PROFILE"; payload: string };

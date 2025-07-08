@@ -1,12 +1,12 @@
 import Button from "../button/Button";
 import "./formular.scss";
 import useFormData from "../../hooks/useFormData";
-import { useContext } from "react";
-import { StorageContext } from "../../context/StorageContext";
+
+import { useStorage } from "../../context/StorageContext";
 
 function Formular() {
   const { handleChange, formData } = useFormData();
-  const { addProfile } = useContext(StorageContext);
+  const { addProfile } = useStorage();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); // avoid reload

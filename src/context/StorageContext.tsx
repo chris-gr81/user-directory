@@ -2,7 +2,7 @@ import {
   createContext,
   useEffect,
   useReducer,
-  useState,
+  useContext,
   type ReactNode,
 } from "react";
 import { LOCAL_STORAGE_KEY } from "../constants";
@@ -11,11 +11,13 @@ import { profilesReducer } from "../reducers/profilesReducer";
 
 type StorageContextType = {
   addProfile: (profile: UserData) => void;
+  deleteProfile: (id: string) => void;
   profiles: UserData[];
 };
 
 export const StorageContext = createContext<StorageContextType>({
   addProfile: () => {},
+  deleteProfile: () => {},
   profiles: [],
 });
 
@@ -43,11 +45,23 @@ export function StorageProvider({ children }: { children: ReactNode }) {
     dispatch({ type: "ADD_PROFILE", payload: profile });
   };
 
+  // delete profile and update local storage
+  const deleteProfile = (id: string) => {
+    dispatch({ type: "DELETE_PROFILE", payload: id });
+  };
   return (
-    <StorageContext.Provider value={{ addProfile, profiles }}>
+    <StorageContext.Provider value={{ addProfile, deleteProfile, profiles }}>
       {children}
     </StorageContext.Provider>
   );
+}
+
+export function useStorage() {
+  const context = useContext(StorageContext);
+  if (!context) {
+    throw new Error("useStorage must be used within a StorageProvider");
+  }
+  return context;
 }
 
 export default StorageProvider;
