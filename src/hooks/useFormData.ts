@@ -1,11 +1,13 @@
 import { useState } from "react";
 import type { UserData } from "../types/types";
 import { useStorage } from "../context/StorageContext";
+import { useNavigate } from "react-router-dom";
 
 function useFormData(initialData: UserData) {
   const [formData, setFormData] = useState<UserData>(initialData);
   const { addProfile, updateProfile } = useStorage();
   const isEdit = Boolean(initialData.id);
+  const navigate = useNavigate();
 
   const isBtnValid =
     formData.userName !== "" &&
@@ -28,8 +30,8 @@ function useFormData(initialData: UserData) {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); // avoid reload
-
     isEdit ? updateProfile(formData) : addProfile(formData);
+    navigate("/overview/");
   };
 
   return { formData, handleChange, handleSubmit, isEdit, isBtnValid };
