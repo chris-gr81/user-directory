@@ -6,7 +6,8 @@
   & label {
     color: $color-text-primary;
   }
-  & input {
+  & input,
+  select {
     height: 2rem;
     border: $input-border;
     border-radius: $border-radius-default;
@@ -14,6 +15,7 @@
     margin-top: 0.1rem;
     margin-bottom: 1rem;
     box-shadow: $shadow-default;
+    padding-left: 0.5rem;
 
     &:focus {
       border: $input-focus-border;

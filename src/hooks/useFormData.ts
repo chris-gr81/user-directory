@@ -18,7 +18,9 @@ function useFormData(initialData: UserData) {
     formData.phone !== "" &&
     formData.url !== "";
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prevData) => {
       return {

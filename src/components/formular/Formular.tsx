@@ -31,18 +31,17 @@ function Formular({ initialData }: FormularProps) {
         onChange={handleChange}
       />
       <label htmlFor="gender">Geschlecht</label>
-      <input
-        list="gender-list"
+      <select
         id="gender"
         name="gender"
         value={formData.gender}
         onChange={handleChange}
-      />
-      <datalist id="gender-list">
-        <option value="männlich"></option>
-        <option value="weiblich"></option>
-        <option value="divers"></option>
-      </datalist>
+      >
+        <option value="">Bitte wählen: </option>
+        <option value="männlich">männlich</option>
+        <option value="weiblich">weiblich</option>
+        <option value="divers">divers</option>
+      </select>
       <label htmlFor="email">E-Mail Adresse</label>
       <input
         type="email"
