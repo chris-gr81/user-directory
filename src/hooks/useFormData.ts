@@ -33,7 +33,7 @@ function useFormData(initialData: UserData) {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); // avoid reload
     isEdit ? updateProfile(formData) : addProfile(formData);
-    navigate("/overview/");
+    navigate("/user-directory/overview");
   };
 
   return { formData, handleChange, handleSubmit, isEdit, isBtnValid };

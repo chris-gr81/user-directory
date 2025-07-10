@@ -31,7 +31,7 @@ function Card({ value }: CardProps) {
       if (deleteBtn) {
         deleteProfile(cardId); // click on delete-icon (for delete card)
       } else {
-        navigate(`/edit/${cardId}`); // click on any other place at the card (for edit mode)
+        navigate(`/user-directory/edit/${cardId}`); // click on any other place at the card (for edit mode)
       }
     }
   };
