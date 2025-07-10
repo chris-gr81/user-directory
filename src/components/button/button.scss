@@ -8,6 +8,18 @@
   border: $input-border;
   box-shadow: $shadow-default;
 
+  &:disabled {
+    background-color: $btn-secondary-bg;
+    color: $btn-secondary-text;
+    cursor: not-allowed;
+
+    &:hover {
+      background-color: $btn-secondary-bg;
+      color: $btn-secondary-text;
+      cursor: not-allowed;
+    }
+  }
+
   &__default {
     background-color: $btn-primary-bg;
     color: $btn-primary-text;

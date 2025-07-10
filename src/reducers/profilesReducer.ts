@@ -17,6 +17,19 @@ export function profilesReducer(state: UserData[], action: ProfileAction) {
       const modifiedProfiles = state.filter(({ id }) => id !== action.payload);
       return modifiedProfiles;
     }
+    case "UPDATE_PROFILE": {
+      // update a changed profile by id
+      const currentId = action.payload.id;
+      const modifiedProfiles = state.map((profile) => {
+        if (profile.id === currentId) {
+          return action.payload;
+        } else {
+          return profile;
+        }
+      });
+
+      return modifiedProfiles;
+    }
     default:
       return state;
   }

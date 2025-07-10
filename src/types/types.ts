@@ -1,4 +1,4 @@
-export type UserData = {
+export interface UserData {
   id?: string;
   userName: string;
   birthDate?: string;
@@ -7,10 +7,14 @@ export type UserData = {
   adress?: string;
   phone?: string;
   url?: string;
-};
+}
 
-export type FormAction = { type: keyof UserData; value: string };
+export interface FormAction {
+  type: keyof UserData;
+  value: string;
+}
 
 export type ProfileAction =
   | { type: "ADD_PROFILE"; payload: UserData }
-  | { type: "DELETE_PROFILE"; payload: string };
+  | { type: "DELETE_PROFILE"; payload: string }
+  | { type: "UPDATE_PROFILE"; payload: UserData };

@@ -17,7 +17,7 @@ function App() {
         { index: true, element: <Index /> },
         { path: "overview", element: <Overview /> },
         { path: "create", element: <CreateView /> },
-        { path: "edit/:userId", element: <EditView /> },
+        { path: "edit/:profileId", element: <EditView /> },
       ],
     },
   ]);

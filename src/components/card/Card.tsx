@@ -12,19 +12,37 @@ import {
   faTrashCan,
 } from "@fortawesome/free-solid-svg-icons";
 import { useStorage } from "../../context/StorageContext";
+import { useNavigate } from "react-router-dom";
+
 type CardProps = {
   value: UserData;
 };
 
 function Card({ value }: CardProps) {
   const { deleteProfile } = useStorage();
-  const handleDelete = (e: React.MouseEvent<SVGSVGElement>) => {
-    const id = e.currentTarget.dataset.id;
-    if (id) deleteProfile(id); // exluding undefined instead of string
+  const navigate = useNavigate();
+
+  const handleCardClick = (e: React.MouseEvent<HTMLElement>) => {
+    const card = e.currentTarget as HTMLElement;
+    const cardId = card.dataset.id;
+    const deleteBtn = (e.target as HTMLElement).closest(".card__icon--delete");
+
+    if (cardId) {
+      if (deleteBtn) {
+        deleteProfile(cardId); // click on delete-icon (for delete card)
+      } else {
+        navigate(`/edit/${cardId}`); // click on any other place at the card (for edit mode)
+      }
+    }
   };
 
   return (
-    <div className="card" id="card__id">
+    <div
+      className="card"
+      id="card__id"
+      data-id={value.id}
+      onClick={handleCardClick}
+    >
       <div className="card__picture">
         <img
           className="card__sample-pic"
@@ -69,8 +87,6 @@ function Card({ value }: CardProps) {
         <FontAwesomeIcon
           icon={faTrashCan}
           className="card__icon card__icon--delete"
-          data-id={value.id}
-          onClick={handleDelete}
         />
       </div>
     </div>

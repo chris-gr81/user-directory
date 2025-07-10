@@ -1,29 +1,38 @@
-import { useReducer, useState } from "react";
+import { useState } from "react";
 import type { UserData } from "../types/types";
-import { formReducer } from "../reducers/formReducer";
+import { useStorage } from "../context/StorageContext";
 
-function useFormData() {
-  const defaultUserData: UserData = {
-    id: "", // TODO
-    userName: "",
-    birthDate: "",
-    gender: "",
-    eMail: "",
-    adress: "",
-    phone: "",
-    url: "",
-  };
-  const [formData, dispatchFormData] = useReducer(formReducer, defaultUserData);
+function useFormData(initialData: UserData) {
+  const [formData, setFormData] = useState<UserData>(initialData);
+  const { addProfile, updateProfile } = useStorage();
+  const isEdit = Boolean(initialData.id);
 
-  const handleChange = (e: React.ChangeEvent<HTMLFormElement>) => {
+  const isBtnValid =
+    formData.userName !== "" &&
+    formData.birthDate !== "" &&
+    formData.gender !== "" &&
+    formData.eMail !== "" &&
+    formData.adress !== "" &&
+    formData.phone !== "" &&
+    formData.url !== "";
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    dispatchFormData({
-      type: name as keyof UserData,
-      value,
+    setFormData((prevData) => {
+      return {
+        ...prevData,
+        [name as keyof UserData]: value,
+      };
     });
   };
 
-  return { formData, handleChange };
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault(); // avoid reload
+
+    isEdit ? updateProfile(formData) : addProfile(formData);
+  };
+
+  return { formData, handleChange, handleSubmit, isEdit, isBtnValid };
 }
 
 export default useFormData;

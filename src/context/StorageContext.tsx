@@ -5,19 +5,23 @@ import {
   useContext,
   type ReactNode,
 } from "react";
-import { LOCAL_STORAGE_KEY } from "../constants";
+import { DEFAULT_USER, LOCAL_STORAGE_KEY } from "../constants";
 import type { UserData } from "../types/types";
 import { profilesReducer } from "../reducers/profilesReducer";
 
 type StorageContextType = {
   addProfile: (profile: UserData) => void;
   deleteProfile: (id: string) => void;
+  getProfile: (id: string) => UserData;
+  updateProfile: (profile: UserData) => void;
   profiles: UserData[];
 };
 
 export const StorageContext = createContext<StorageContextType>({
   addProfile: () => {},
   deleteProfile: () => {},
+  getProfile: () => DEFAULT_USER,
+  updateProfile: () => {},
   profiles: [],
 });
 
@@ -49,8 +53,22 @@ export function StorageProvider({ children }: { children: ReactNode }) {
   const deleteProfile = (id: string) => {
     dispatch({ type: "DELETE_PROFILE", payload: id });
   };
+
+  // return profile by id
+  const getProfile = (id: string) => {
+    const profile = profiles.find((p) => p.id === id);
+    return profile ? profile : DEFAULT_USER;
+  };
+
+  // edit a profile by given id and update local storage
+  const updateProfile = (profile: UserData) => {
+    dispatch({ type: "UPDATE_PROFILE", payload: profile });
+  };
+
   return (
-    <StorageContext.Provider value={{ addProfile, deleteProfile, profiles }}>
+    <StorageContext.Provider
+      value={{ addProfile, deleteProfile, getProfile, updateProfile, profiles }}
+    >
       {children}
     </StorageContext.Provider>
   );
