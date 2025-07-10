@@ -10,7 +10,7 @@ import EditView from "./routes/edit/EditView";
 function App() {
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: "/user-directory/",
       element: <Root />,
       errorElement: <ErrorPage />,
       children: [
